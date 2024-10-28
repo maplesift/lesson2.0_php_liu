@@ -12,7 +12,7 @@
         <li>建立一個可以輸入身高和體重的表單畫面</li>
         <li>按下"計算BMI"按鈕後，在另一個頁面顯示BMI值</li>
     </ul>
-    <form action="result.php" method="post">
+    <form action="result.php" method="get">
         <div>
             <label for="height">身高</label>
             <input type="number" name="height" id="height">/cm
@@ -23,10 +23,9 @@
         </div>
         <div>
             <input type="submit" value="送出">
-            <input type="reset" value="清空/重置">
         </div>
         <div>
-            
+            <input type="reset" value="清空/重置">
         </div>
     </form>
 
