@@ -7,11 +7,15 @@
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>計算bmi</h1>
-    <ul>
-        <li>建立一個可以輸入身高和體重的表單畫面</li>
-        <li>按下"計算BMI"按鈕後，在另一個頁面顯示BMI值</li>
-    </ul>
+        <?php 
+        if(isset($_GET['bmi'])){
+            echo "你上一次量測的BMI為{$_GET['bmi']}";
+        }
+        ?>
+    
+    <h1>計算bmi-get</h1>
+
+
     <form action="result.php" method="get">
         <div>
             <label for="height">身高</label>
@@ -29,6 +33,24 @@
         </div>
     </form>
 
+    <h1>計算bmi-post</h1>
+    
+    <form action="result.php" method="post">
+        <div>
+            <label for="height">身高</label>
+            <input type="number" name="height" id="height">/cm
+        </div>
+        <div>
+            <label for="weight">體重</label>
+            <input type="number" name="weight" id="weight">/kg
+        </div>
+        <div>
+            <input type="submit" value="送出">
+        </div>
+        <div>
+            <input type="reset" value="清空/重置">
+        </div>
+    </form>
 
 </body>
 </html>
