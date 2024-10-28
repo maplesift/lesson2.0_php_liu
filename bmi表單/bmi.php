@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>計算bmi</title>
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <div>
+        <a href="../index.html">回首頁</a>
+    </div>
         <?php 
         if(isset($_GET['bmi'])){
             echo "你上一次量測的BMI為{$_GET['bmi']}";

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bmi結果</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -56,7 +56,7 @@
     <div>你的bmi為:<?=$bmi; ?></div>
     <div>體位判定為:<?=$level; ?></div>
     <div>
-        <a href="index.php?bmi=<?=$bmi?>">重新量測</a>
+        <a href="bmi.php?bmi=<?=$bmi?>">重新量測</a>
     </div>
     <div></div>
 
