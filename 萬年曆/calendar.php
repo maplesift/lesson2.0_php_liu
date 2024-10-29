@@ -43,10 +43,16 @@
     if ($month-1<1) {
         $prevMonth=12;
         $prevYear=$year-1;
+    }else {
+        $prevMonth=$month-1;
+        $prevYear=$year;
     }
     if ($month+1>12) {
         $nextMonth=1;
         $nextYear=$year+1;
+    }else {
+        $nextMonth=$month+1;
+        $nextYear=$year;
     }
     ?>
     <h1>萬年曆</h1>
