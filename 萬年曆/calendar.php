@@ -65,8 +65,8 @@
     <li>有前年跟來年的按鈕</li>
 </ul>
 <a href="">前年</a>
-<a href="calendar.php?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">上一個月</a>
-<a href="calendar.php?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">下一個月</a>
+<a href="calendar.php ?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">上一個月</a>
+<a href="calendar.php ?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">下一個月</a>
 <a href="">明年</a>
 <h3><?php echo date("{$month}月"); ?></h3>
     <table>
