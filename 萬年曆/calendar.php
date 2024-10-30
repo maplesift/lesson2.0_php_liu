@@ -33,27 +33,38 @@
     if(isset($_GET['month'])){
         $month=$_GET['month'];
     }else{
-        $month=date("m");
+        $month=date("m"); //預設為今月
     }
     if(isset($_GET['year'])){
         $year=$_GET['year'];
     }else{
-        $year=date("Y");
+        $year=date("Y"); //預設為今年
     }
-    if ($month-1<1) {
-        $prevMonth=12;
-        $prevYear=$year-1;
-    }else {
-        $prevMonth=$month-1;
-        $prevYear=$year;
-    }
-    if ($month+1>12) {
-        $nextMonth=1;
-        $nextYear=$year+1;
-    }else {
-        $nextMonth=$month+1;
-        $nextYear=$year;
-    }
+
+    // 使用三元運算符 (? :) 判斷當月份是否為邊界值（即 1 或 12）。
+    // 若 month 為 1，prevMonth 設為 12 並將 prevYear 減少一年；否則，prevMonth 直接減 1，prevYear 保持不變。
+    // 同理，若 month 為 12，nextMonth 設為 1 並將 nextYear 增加一年；否則，nextMonth 增加 1，nextYear 保持不變。
+    $prevMonth = ($month == 1) ? 12 : $month - 1; 
+    $prevYear = ($month == 1) ? $year - 1 : $year;
+
+    $nextMonth = ($month == 12) ? 1 : $month + 1;
+    $nextYear = ($month == 12) ? $year + 1 : $year;
+    
+    // 另一種寫法
+    // if ($month-1<1) {
+    //     $prevMonth=12;
+    //     $prevYear=$year-1;
+    // }else {
+    //     $prevMonth=$month-1;
+    //     $prevYear=$year;
+    // }
+    // if ($month+1>12) {
+    //     $nextMonth=1;
+    //     $nextYear=$year+1;
+    // }else {
+    //     $nextMonth=$month+1;
+    //     $nextYear=$year;
+    // }
     ?>
     <h1>萬年曆</h1>
     <h1>
@@ -68,7 +79,7 @@
 <a href="calendar.php ?year=<?=$prevYear;?>&month=<?=$prevMonth;?>">上一個月</a>
 <a href="calendar.php ?year=<?=$nextYear;?>&month=<?=$nextMonth;?>">下一個月</a>
 <a href="">明年</a>
-<h3><?php echo date("{$month}月"); ?></h3>
+<h3><?php echo date("{$year}年{$month}月"); ?></h3>
     <table>
 <tr>
     <td></td>
@@ -83,10 +94,10 @@
 <?php 
 //用時間戳date函數做月曆
 
-$firstDay="2024-{$month}-1";
+$firstDay="{$year}-{$month}-1"; //顯示第一天
+// echo $firstDay;
 $firstDayTime=strtotime($firstDay);
 $firstDayWeek=date("w",$firstDayTime);
-
 for($i=0;$i<6;$i++){
     echo "<tr>";
     echo "<td>";
@@ -107,11 +118,12 @@ for($i=0;$i<6;$i++){
         // } else {
         //     $theMonth = 'grey-text';
         // }
-        $isToday=(date("Y-m-d",$theDayTime)==date("Y-m-d"))?'today':''; // 
+        //css樣式
+        $isToday=(date("Y-m-d",$theDayTime)==date("Y-m-d"))?'today':''; 
         $w=date("w",$theDayTime);
         $isHoliday=($w==0 || $w==6)?'holiday':'';
         
-        echo "<td class='$isHoliday $theMonth $isToday'>";
+        echo "<td class='$isHoliday $theMonth $isToday'>";//css樣式
         echo date("d",$theDayTime); //將時間戳丟進date函數運算 取得日曆天數 d=月份中的第几天，有补零的两位数字	01 到 31
         echo "</td>";
     }
