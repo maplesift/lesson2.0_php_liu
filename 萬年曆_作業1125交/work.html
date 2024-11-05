@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>周滾動無縫日曆</title>
+    <style>
+        /* 基本樣式 */
+        #calendar {
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            user-select: none;
+            overflow-y: auto;
+            max-height: 500px;
+        }
+
+        #month-year {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .calendar-body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+        }
+
+        .date-cell {
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .date-cell.other-month {
+            color: #999;
+        }
+
+        .date-cell.today {
+            background-color: #ffeb3b;
+            font-weight: bold;
+        }
+
+        .date-cell.holiday {
+            color: #e91e63;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="calendar">
+        <div id="month-year"></div>
+        <div id="calendar-body" class="calendar-body"></div>
+    </div>
+
+    <script>
+        const calendarBody = document.getElementById("calendar-body");
+        const monthYear = document.getElementById("month-year");
+
+        let currentDate = new Date();
+
+        function renderCalendar(date) {
+            calendarBody.innerHTML = ""; // 清除當前日曆
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const day = date.getDate();
+
+            monthYear.innerText = `${year}年 ${month + 1}月`;
+
+            // 確定 6 行範圍的日期
+            const startDate = new Date(year, month, day - date.getDay()); // 當前週的周日
+            const datesToShow = 42; // 顯示 6 行共 42 格
+
+            for (let i = 0; i < datesToShow; i++) {
+                const cellDate = new Date(startDate);
+                cellDate.setDate(startDate.getDate() + i);
+
+                const dateCell = document.createElement("div");
+                dateCell.classList.add("date-cell");
+
+                // 標記不同月份的日期
+                if (cellDate.getMonth() !== month) {
+                    dateCell.classList.add("other-month");
+                }
+
+                // 判斷今天
+                if (cellDate.toDateString() === new Date().toDateString()) {
+                    dateCell.classList.add("today");
+                }
+
+                // 判斷週末
+                const dayOfWeek = cellDate.getDay();
+                if (dayOfWeek === 0 || dayOfWeek === 6) {
+                    dateCell.classList.add("holiday");
+                }
+
+                dateCell.innerText = cellDate.getDate();
+                calendarBody.appendChild(dateCell);
+            }
+        }
+
+        function scrollWeek(direction) {
+            currentDate.setDate(currentDate.getDate() + direction * 7);
+            renderCalendar(currentDate);
+        }
+
+        // 監聽滾輪事件
+        document.getElementById("calendar").addEventListener("wheel", (e) => {
+            if (e.deltaY > 0) {
+                // 向下滾動，顯示下一週
+                scrollWeek(1);
+            } else if (e.deltaY < 0) {
+                // 向上滾動，顯示上一週
+                scrollWeek(-1);
+            }
+        });
+
+        // 初始顯示
+        renderCalendar(currentDate);
+    </script>
+
+</body>
+
+</html>

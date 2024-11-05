@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滾動日曆</title>
+    <style>
+        #calendar {
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            user-select: none;
+            overflow-y: auto;
+            max-height: 500px;
+        }
+
+        #month-year {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .calendar-body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+        }
+
+        .date-cell {
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            color: black;
+            /* 當前月份的日期顏色 */
+        }
+
+        .date-cell.other-month {
+            color: #999;
+            /* 不屬於當前月份的日期顏色 */
+        }
+
+        .date-cell.today {
+            background-color: #ffeb3b;
+            font-weight: bold;
+        }
+
+        .date-cell.holiday {
+            color: #e91e63;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="calendar">
+        <div id="month-year"></div>
+        <div id="calendar-body" class="calendar-body"></div>
+    </div>
+
+    <script>
+        const calendarBody = document.getElementById("calendar-body");
+        const monthYear = document.getElementById("month-year");
+
+        let currentDate = new Date();
+
+        function renderCalendar(date) {
+            calendarBody.innerHTML = ""; // 清除當前日曆
+            const year = date.getFullYear();
+            const month = date.getMonth();
+
+            // 設定標題月份和年份
+            monthYear.innerText = `${year}年 ${month + 1}月`;
+
+            // 確定 6 行範圍的日期
+            const startDate = new Date(date);
+            startDate.setDate(startDate.getDate() - startDate.getDay()); // 將日期移動到當週的周日
+            const datesToShow = 42; // 顯示 6 行共 42 格
+
+            let nextMonthCount = 0;
+            let currentMonthCount = 0;
+
+            for (let i = 0; i < datesToShow; i++) {
+                const cellDate = new Date(startDate);
+                cellDate.setDate(startDate.getDate() + i);
+
+                const dateCell = document.createElement("div");
+                dateCell.classList.add("date-cell");
+
+                // 檢查是否屬於當前月份
+                if (cellDate.getMonth() !== month) {
+                    dateCell.classList.add("other-month"); // 不屬於當前月份，顯示灰色
+                    nextMonthCount++;
+                } else {
+                    currentMonthCount++;
+                }
+
+                // 判斷今天
+                if (cellDate.toDateString() === new Date().toDateString()) {
+                    dateCell.classList.add("today");
+                }
+
+                // 判斷週末
+                const dayOfWeek = cellDate.getDay();
+                if (dayOfWeek === 0 || dayOfWeek === 6) {
+                    dateCell.classList.add("holiday");
+                }
+
+                dateCell.innerText = cellDate.getDate();
+                calendarBody.appendChild(dateCell);
+            }
+
+            // 判斷是否超過一半的日期屬於下個月
+            if (nextMonthCount > currentMonthCount) {
+                const newDate = new Date(year, month + 1, 1);
+                monthYear.innerText = `${newDate.getFullYear()}年 ${newDate.getMonth() + 1}月`;
+            } else {
+                monthYear.innerText = `${year}年 ${month + 1}月`;
+            }
+        }
+
+        function scrollWeek(direction) {
+            currentDate.setDate(currentDate.getDate() + direction * 7);
+            renderCalendar(currentDate);
+        }
+
+        // 監聽滾輪事件，每次滾動一週
+        document.getElementById("calendar").addEventListener("wheel", (e) => {
+            if (e.deltaY > 0) {
+                scrollWeek(1); // 向下滾動，顯示下一週
+            } else if (e.deltaY < 0) {
+                scrollWeek(-1); // 向上滾動，顯示上一週
+            }
+        });
+
+        // 初始顯示
+        renderCalendar(currentDate);
+    </script>
+
+
+
+</body>
+
+</html>
