@@ -18,35 +18,17 @@
     <?php
     $dsn= "mysql:host=localhost;charset=utf8;dbname=school";
     $pdo= new PDO($dsn,'root','');
-    $sql="select * from classes";
+    // $sql="select * from students";
+    $sql = "SELECT * FROM students LIMIT 50";  // 增加 LIMIT 50 限制行數
     $rows= $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     ?>
-
-
 <?php
+foreach ($rows as $row){
 
-foreach ($rows as $row) {
-    ?>
-    <table>
-        <tr>
-            <td>序號</td>
-            <td>班級名稱</td>
-            <td>班導師</td>
-        </tr>
-        <tr>
-            <td><?=$row['id'];?></td>
-            <td><?=$row['name'];?></td>
-            <td><?=$row['tutor'];?></td>
-        </tr>
-    </table>
-    <?php
+    echo $row['id']."-學號:".$row['uni_id']."-".$row['name']."<br>";
 }
-    ?>
-    <!-- // echo "<table>"."<td>"."<tr>".$row['id']."-".$row['name']."-".$row['tutor']."</tr>"."</td>"."<br>"."</table>";
-    // echo "<pre>";
-    // print_r($rows);
-    // echo "</pre>" -->
-
-
+ 
+?> 
+<!-- $row['id']."-".$row['name']."-".$row['tutor'] -->
 </body>
 </html>
