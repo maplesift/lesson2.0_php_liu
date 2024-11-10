@@ -1,0 +1,34 @@
+table {
+    border-collapse: collapse;
+    margin: auto;
+
+}
+
+td {
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid #999;
+}
+
+.holiday {
+    background: pink;
+    color: #999;
+}
+
+.grey-text {
+    color: #999;
+}
+
+.today {
+    background: blue;
+    color: white;
+    font-weight: bolder;
+}
+.div_button{
+    margin: auto;
+    text-align: center;
+}
+.div_date{
+    margin: auto;
+    text-align: center;
+}
