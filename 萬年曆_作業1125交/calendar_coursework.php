@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>萬年曆</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./test.ico" sizes="32x32" type="image/png">
 
 </head>
 
@@ -21,7 +22,6 @@
     } else {
         $year = date("Y"); //預設為今年
     }
-
     // 使用三元運算符 (? :) 判斷當月份是否為邊界值（即 1 或 12）。
     // 若 month 為 1，prevMonth 設為 12 並將 prevYear 減少一年；否則，prevMonth 直接減 1，prevYear 保持不變。
     // 同理，若 month 為 12，nextMonth 設為 1 並將 nextYear 增加一年；否則，nextMonth 增加 1，nextYear 保持不變。
@@ -29,23 +29,17 @@
     $prevYear = ($month == 1) ? $year - 1 : $year;
     $nextMonth = ($month == 12) ? 1 : $month + 1;
     $nextYear = ($month == 12) ? $year + 1 : $year;
-
-
-
-
-
     ?>
-        <div class="div_date">
-            <h3><?php echo date("{$year}年{$month}月"); ?></h3>
-        </div>
-    <div class="div_center div_a">
-        <a class="div_buttonlike" href="calendar_coursework.php?year=<?= $year - 1 ?>&month=<?= $month; ?>">去年</a>
-        <a class="div_buttonlike" href="calendar_coursework.php?year=<?= $prevYear; ?>&month=<?= $prevMonth; ?>">上一個月</a>
-        <a class="div_buttonlike" href="calendar_coursework.php?year=<?=date("Y"); ?>&month=<?=date("m"); ?>">回到今天</a>
-        <a class="div_buttonlike"href="calendar_coursework.php?year=<?= $nextYear; ?>&month=<?= $nextMonth; ?>">下一個月</a>
-        <a class="div_buttonlike" href="calendar_coursework.php?year=<?= $year + 1; ?>&month=<?= $month; ?>">明年</a>
+<div class="div_date">
+    <?php
+    // DateTime::createFromFormat('Y-m', "{$year}-{$month}")：從指定的年份和月份字串中創建一個 DateTime 物件。
+    // Y年n月：顯示年和月的數字格式，例如「2024年11月」。
+    // F：DateTime 物件中的 F 參數會顯示月份的英文全名，例如「November」。
+        $date = DateTime::createFromFormat('Y-m', "{$year}-{$month}");
+        echo "<h3>{$date->format('Y年n月')} {$date->format('F')}</h3>";
+    ?>
+</div>
 
-    </div>
     <table>
         <tr>
             <!-- <td></td> -->
@@ -84,7 +78,28 @@ $firstDayWeek = date("w", $firstDayTime);
             echo "</tr>";
         }
         ?>
-    </table>
+
+</table>
+<div class="div_center div_a">
+<a  href="calendar_coursework.php?year=<?= $year - 1 ?>&month=<?= $month; ?>"><img src="./img/04.png" alt="" class="resized-image"></a>
+<a  href="calendar_coursework.php?year=<?= $prevYear; ?>&month=<?= $prevMonth; ?>"><img src="./img/03.png" alt="" class="resized-image"></a>
+<a  href="calendar_coursework.php?year=<?=date("Y"); ?>&month=<?=date("m"); ?>"><img src="./img/05.png" alt="" class="resized-image"></a>
+<a  href="calendar_coursework.php?year=<?= $nextYear; ?>&month=<?= $nextMonth; ?>"><img src="./img/01.png" alt="" class="resized-image"></a>
+<a  href="calendar_coursework.php?year=<?= $year + 1; ?>&month=<?= $month; ?>"><img src="./img/02.png" alt="" class="resized-image"></a>
+</div>
+    <form action="calendar_coursework.php" class="div_form div_center">
+    <div>
+        <div>
+            <label for="year"></label>
+            <input type="number" name="year" id="year" placeholder="YYYY" pattern="\d{4}" title="請輸入年份（YYYY）">年
+            <label for="month"></label>
+            <input type="number" name="month" id="month" placeholder="MM" pattern="\d{2}" title="請輸入月份（MM）">月
+            <input type="submit" value="送出">
+        </div>
+        <div>
+        </div>
+    </div>
+    </form>
 
 </body>
 
