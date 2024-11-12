@@ -30,15 +30,38 @@
     $nextMonth = ($month == 12) ? 1 : $month + 1;
     $nextYear = ($month == 12) ? $year + 1 : $year;
     ?>
-<div class="div_date">
+<div class="date_font">
     <?php
     // DateTime::createFromFormat('Y-m', "{$year}-{$month}")：從指定的年份和月份字串中創建一個 DateTime 物件。
     // Y年n月：顯示年和月的數字格式，例如「2024年11月」。
     // F：DateTime 物件中的 F 參數會顯示月份的英文全名，例如「November」。
         $date = DateTime::createFromFormat('Y-m', "{$year}-{$month}");
-        echo "<h3>{$date->format('Y年n月')} {$date->format('F')}</h3>";
+        echo "<h1>{$date->format('Y年n月')} <br>{$date->format('F')}</h1>";
     ?>
 </div>
+    <?php
+// 建立一個包含月份縮寫的陣列
+$months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+?>
+<div class="month-buttons">
+    <?php 
+    // 使用 foreach 迴圈遍歷每一個月份
+    foreach ($months as $index => $monthName): 
+        // 設定 $monthNum 為該月份的數字（因為 $index 從 0 開始，所以要加 1）
+        $monthNum = $index + 1; 
+    ?>
+        <!-- 
+            建立一個連結元素作為月份按鈕 
+            若 $monthNum 等於當前顯示的月份 ($month)，則加入 'current-month' class 來上色 
+        -->
+        <a class="month-button <?php if ($monthNum == $month) echo 'current-month'; ?>" 
+           href="calendar_coursework.php?year=<?= $year ?>&month=<?= $monthNum ?>">
+           <!-- 顯示月份名稱，例如 'Jan', 'Feb' 等 -->
+           <?= $monthName ?>
+        </a>
+    <?php endforeach; ?>
+</div>
+
 
     <table>
         <tr>
@@ -81,6 +104,7 @@ $firstDayWeek = date("w", $firstDayTime);
 
 </table>
 <div class="div_center div_a">
+    <!-- 去年到明年按鈕*5 -->
 <a  href="calendar_coursework.php?year=<?= $year - 1 ?>&month=<?= $month; ?>"><img src="./img/04.png" alt="" class="resized-image"></a>
 <a  href="calendar_coursework.php?year=<?= $prevYear; ?>&month=<?= $prevMonth; ?>"><img src="./img/03.png" alt="" class="resized-image"></a>
 <a  href="calendar_coursework.php?year=<?=date("Y"); ?>&month=<?=date("m"); ?>"><img src="./img/05.png" alt="" class="resized-image"></a>
@@ -100,7 +124,94 @@ $firstDayWeek = date("w", $firstDayTime);
         </div>
     </div>
     </form>
+<!-- <style>
+    table {
+    width: 50%;
+    height: 50vh;
+    border-collapse: collapse;
+    margin: auto;
 
+    }
+
+    td {
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid #999;
+    }
+
+    .thisMonth {
+    font-weight: bold;
+    }
+
+    .holiday {
+    /* background: pink; */
+    color: #ff0000;
+    font-weight: bold;
+
+    }
+
+    .grey-text {
+    color: #999;
+    font-weight: lighter;
+    }
+
+    .today {
+    background: blue;
+    color: white;
+    font-weight: bolder;
+    }
+
+    .outside {
+    width: 100%;
+    height: 80vh;
+    font-size: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    .date_font{
+        font-size:48px;
+    }
+    .div_center {
+    margin: auto;
+    text-align: center;
+    /* background-color: skyblue; */
+    }
+    .resized-image {
+    width: 50px;
+    /* 固定寬度 */
+    height: auto;
+    /* 高度自動調整，保持比例 */
+    position: relative;
+    }
+
+
+    .div_date {
+    margin: auto;
+    text-align: center;
+    }
+
+    .month-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    color: #ff0000;
+    margin-bottom: 10px;
+    }
+
+    .month-button {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+    }
+
+    .current-month {
+    background-color: #FFD700;
+    /* Gold color for current month */
+    font-weight: bold;
+    color: white;
+    }
+</style> -->
 </body>
 
 </html>

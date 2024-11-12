@@ -43,20 +43,15 @@ td {
     justify-content: center;
 }
 
+.date_font {
+    font-size: 48px;
+}
+
 .div_center {
     margin: auto;
     text-align: center;
     /* background-color: skyblue; */
 }
-
-/* .div_a {
-    padding-bottom: 10px;
-} */
-
-/* .div_buttonlike {
-    width: 50px;
-    height: 50px;
-} */
 
 .resized-image {
     width: 50px;
@@ -66,6 +61,42 @@ td {
     position: relative;
 }
 
+
+.div_date {
+    margin: auto;
+    text-align: center;
+}
+
+.month-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    color: #ff0000;
+    margin-bottom: 10px;
+}
+
+.month-button {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.current-month {
+    background-color: #FFD700;
+    /* Gold color for current month */
+    font-weight: bold;
+    color: white;
+}
+
+
+/* .div_a {
+    padding-bottom: 10px;
+} */
+
+/* .div_buttonlike {
+    width: 50px;
+    height: 50px;
+} */
 /* 
 .div_buttonlike {
     display: inline-block;
@@ -84,11 +115,6 @@ td {
 .div_buttonlike:hover {
     background-color: #0056b3;
 } */
-
-.div_date {
-    margin: auto;
-    text-align: center;
-}
 
 /* .div_form {
     padding-top: 10px;
