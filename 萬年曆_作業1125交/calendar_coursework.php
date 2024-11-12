@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>萬年曆</title>
-    <link rel="stylesheet" href="./style.css">
+    <!-- <link rel="stylesheet" href="./style.css"> -->
     <link rel="icon" href="./test.ico" sizes="32x32" type="image/png">
 
 </head>
@@ -30,7 +30,7 @@
     $nextMonth = ($month == 12) ? 1 : $month + 1;
     $nextYear = ($month == 12) ? $year + 1 : $year;
     ?>
-<div class="date_font">
+<div >
     <?php
     // DateTime::createFromFormat('Y-m', "{$year}-{$month}")：從指定的年份和月份字串中創建一個 DateTime 物件。
     // Y年n月：顯示年和月的數字格式，例如「2024年11月」。
@@ -120,98 +120,190 @@ $firstDayWeek = date("w", $firstDayTime);
             <input type="number" name="month" id="month" placeholder="MM" pattern="\d{2}" title="請輸入月份（MM）">月
             <input type="submit" value="送出">
         </div>
-        <div>
-        </div>
     </div>
     </form>
-<!-- <style>
+<style>
     table {
     width: 50%;
     height: 50vh;
     border-collapse: collapse;
     margin: auto;
 
-    }
+}
 
-    td {
+td {
     padding: 5px 10px;
     text-align: center;
     border: 1px solid #999;
-    }
+}
 
-    .thisMonth {
+.thisMonth {
     font-weight: bold;
-    }
+}
 
-    .holiday {
+.holiday {
     /* background: pink; */
     color: #ff0000;
     font-weight: bold;
 
-    }
+}
 
-    .grey-text {
+.grey-text {
     color: #999;
     font-weight: lighter;
-    }
+}
 
-    .today {
+.today {
     background: blue;
     color: white;
     font-weight: bolder;
-    }
+}
 
-    .outside {
+.outside {
     width: 100%;
     height: 80vh;
     font-size: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    }
-    .date_font{
-        font-size:48px;
-    }
-    .div_center {
+}
+
+.date_font {
+    font-size: 48px;
+}
+
+.div_center {
     margin: auto;
     text-align: center;
     /* background-color: skyblue; */
-    }
-    .resized-image {
+}
+
+.resized-image {
     width: 50px;
     /* 固定寬度 */
     height: auto;
     /* 高度自動調整，保持比例 */
     position: relative;
-    }
+}
 
 
-    .div_date {
+.div_date {
     margin: auto;
     text-align: center;
-    }
+}
 
-    .month-buttons {
+.month-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
     color: #ff0000;
     margin-bottom: 10px;
-    }
+}
 
-    .month-button {
+.month-button {
     padding: 5px 10px;
     text-decoration: none;
     color: black;
-    }
+}
 
-    .current-month {
+.current-month {
     background-color: #FFD700;
     /* Gold color for current month */
     font-weight: bold;
     color: white;
-    }
-</style> -->
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+.boxspece {
+    width: 98vw;
+    height: 5vh;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 10vh;
+    font-size: 32px;
+}
+
+.box1 {
+    width: 50vw;
+    height: 10vh;
+    background-color: #ff3434;
+    font-size: 32px;
+
+}
+
+.boxMonth {
+    display: flex;
+    justify-content: start;
+    width: 100vw;
+    height: 1vh;
+    font-size: 32px;
+}
+
+
+.box2 {
+    width: 20vw;
+    height: 74vh;
+    background-color: #aeff00;
+    font-size: 32px;
+    position: absolute;
+    top: 10%;
+}
+
+.boxCalendar {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 50vh;
+    font-size: 32px;
+    margin-bottom: 10px;
+
+}
+
+.box3 {
+    width: 48vw;
+    height: 50vh;
+    background-color: #799838;
+    font-size: 32px;
+}
+
+.boxFunction {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 50vh;
+    position: relative;
+    font-size: 32px;
+}
+
+.box4 {
+    width: 55vw;
+    height: 18vh;
+    background-color: #4fc677;
+    font-size: 32px;
+}
+
+.box5 {
+    width: 17vw;
+    height: 10vh;
+    background-color: #00ff62;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 5%;
+    bottom: 70%;
+}
+
+</style>
 </body>
 
 </html>
