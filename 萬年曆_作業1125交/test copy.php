@@ -9,7 +9,7 @@
     <!-- <link rel="stylesheet" href="./style.css"> -->
     <style>
         table {
-            width: 50%;
+            /* width: 50%; */
             height: 50vh;
             border-collapse: collapse;
             margin: auto;
@@ -17,6 +17,7 @@
         }
 
         td {
+            width: 5vw;
             padding: 5px 10px;
             text-align: center;
             border: 1px solid #999;
@@ -184,7 +185,6 @@
             width: 25vw;
             height: 10vh;
             /* background-color: #00ff62; */
-            font-size: 21px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -254,7 +254,7 @@ $months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
                 // Y年n月：顯示年和月的數字格式，例如「2024年11月」。
                 // F：DateTime 物件中的 F 參數會顯示月份的英文全名，例如「November」。
                 $date = DateTime::createFromFormat('Y-m', "{$year}-{$month}");
-                echo "<h1>{$date->format('Y年n月')} <br>{$date->format('F')}</h1>";
+                echo "<h1>{$date->format('Y年n月')} <br><div>{$date->format('F')}</div></h1>";
             ?>
         </div>
     </div>
@@ -327,7 +327,7 @@ $months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
                         <label for="month"></label>
                         <input type="number" name="month" id="month" placeholder="MM" pattern="\d{2}"
                             title="請輸入月份（MM）">月
-                        <input type="submit" value="送出">
+                        <input type="submit" value="search">
                     </div>
                 </div>
             </form>
