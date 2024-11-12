@@ -8,187 +8,191 @@
     <link rel="icon" href="./test.ico" sizes="32x32" type="image/png">
     <!-- <link rel="stylesheet" href="./style.css"> -->
     <style>
-    table {
-    width: 50%;
-    height: 50vh;
-    border-collapse: collapse;
-    margin: auto;
+        table {
+            width: 50%;
+            height: 50vh;
+            border-collapse: collapse;
+            margin: auto;
 
-}
+        }
 
-td {
-    padding: 5px 10px;
-    text-align: center;
-    border: 1px solid #999;
-}
+        td {
+            padding: 5px 10px;
+            text-align: center;
+            border: 1px solid #999;
+        }
 
-.thisMonth {
-    font-weight: bold;
-}
+        .thisMonth {
+            font-weight: bold;
+        }
 
-.holiday {
-    /* background: pink; */
-    color: #ff0000;
-    font-weight: bold;
+        .holiday {
+            /* background: pink; */
+            color: #ff0000;
+            font-weight: bold;
 
-}
+        }
 
-.grey-text {
-    color: #999;
-    font-weight: lighter;
-}
+        .grey-text {
+            color: #999;
+            font-weight: lighter;
+        }
 
-.today {
-    background: blue;
-    color: white;
-    font-weight: bolder;
-}
+        .today {
+            background: blue;
+            color: white;
+            font-weight: bolder;
+        }
 
-.outside {
-    width: 100%;
-    height: 80vh;
-    font-size: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .outside {
+            width: 100%;
+            height: 80vh;
+            font-size: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.date_font {
-    font-size: 48px;
-}
+        .date_font {
+            font-size: 48px;
+        }
 
-.div_center {
-    margin: auto;
-    text-align: center;
-    /* background-color: skyblue; */
-}
-
-.resized-image {
-    width: 50px;
-    /* 固定寬度 */
-    height: auto;
-    /* 高度自動調整，保持比例 */
-    position: relative;
-}
+        .div_center {
+            margin: auto;
+            text-align: center;
+            /* background-color: skyblue; */
+        }
 
 
-.div_date {
-    margin: auto;
-    text-align: center;
-}
 
-.month-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    color: #ff0000;
-    margin-bottom: 10px;
-}
+        .div_date {
+            margin: auto;
+            text-align: center;
+        }
 
-.month-button {
-    padding: 5px 10px;
-    text-decoration: none;
-    color: black;
-}
+        .month-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
 
-.current-month {
-    background-color: #FFD700;
-    /* Gold color for current month */
-    font-weight: bold;
-    color: white;
-}
+        .month-button {
+            padding: 5px 10px;
+            text-decoration: none;
+            color: black;
+        }
 
-
-* {
-    box-sizing: border-box;
-}
-
-.boxspece {
-    width: 98vw;
-    height: 5vh;
-}
-
-.box {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 10vh;
-    font-size: 32px;
-}
-
-.box1 {
-    width: 50vw;
-    height: 10vh;
-    /* background-color: #ff3434; */
-    font-size: 32px;
-
-}
-
-.boxMonth {
-    display: flex;
-    justify-content: start;
-    width: 100vw;
-    height: 1vh;
-    font-size: 32px;
-}
+        .current-month {
+            background-color: #FFD700;
+            /* Gold color for current month */
+            font-weight: bold;
+            color: white;
+        }
 
 
-.box2 {
-    width: 20vw;
-    height: 74vh;
-    /* background-color: #aeff00; */
-    font-size: 32px;
-    position: absolute;
-    top: 10%;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.boxCalendar {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 50vh;
-    font-size: 32px;
-    margin-bottom: 10px;
+        .boxspece {
+            width: 98vw;
+            height: 5vh;
+        }
 
-}
+        .box {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 10vh;
+            font-size: 32px;
+        }
 
-.box3 {
-    width: 48vw;
-    height: 50vh;
-    /* background-color: #799838; */
-    font-size: 32px;
-}
+        .box1 {
+            width: 50vw;
+            height: 10vh;
+            /* background-color: #ff3434; */
+            font-size: 32px;
 
-.boxFunction {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 50vh;
-    position: relative;
-    font-size: 32px;
-}
+        }
 
-.box4 {
-    width: 55vw;
-    height: 18vh;
-    /* background-color: #4fc677; */
-    font-size: 32px;
-}
+        .boxMonth {
+            display: flex;
+            justify-content: start;
+            width: 100vw;
+            height: 1vh;
+            font-size: 32px;
+        }
 
-.box5 {
-    width: 17vw;
-    height: 10vh;
-    /* background-color: #00ff62; */
-    font-size: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 5%;
-    bottom: 70%;
-}
 
-</style>
+        .box2 {
+            width: 20vw;
+            height: 74vh;
+            /* background-color: #aeff00; */
+            font-size: 32px;
+            position: absolute;
+            top: 10%;
+        }
+
+        .boxCalendar {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 50vh;
+            font-size: 32px;
+            margin-bottom: 10px;
+
+        }
+
+        .box3 {
+            width: 48vw;
+            height: 50vh;
+            /* background-color: #799838; */
+            font-size: 32px;
+        }
+
+        .boxFunction {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 50vh;
+            position: relative;
+        }
+
+        .box4 {
+            display: flex;
+            justify-content: center;
+            /* 水平置中圖片 */
+            align-items: center;
+            /* 垂直置中圖片 */
+            width: 55vw;
+            height: 18vh;
+            /* background-color: #4fc677; */
+            font-size: 32px;
+        }
+
+        .resized-image {
+            width: 100px;
+            /* 固定寬度 */
+            height: auto;
+            /* 高度自動調整，保持比例 */
+            /* position: relative; */
+        }
+
+        .box5 {
+            width: 25vw;
+            height: 10vh;
+            /* background-color: #00ff62; */
+            font-size: 21px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 5%;
+            bottom: 73%;
+        }
+    </style>
 
 </head>
 
@@ -216,29 +220,29 @@ td {
 
     <div class="boxspece"></div>
     <div class="box">
-        <div class="box1">    
-        <?php
+        <div class="box1">
+            <?php
 // 建立一個包含月份縮寫的陣列
 $months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 ?>
-<div class="month-buttons">
-    <?php 
+            <div class="month-buttons">
+                <?php 
     // 使用 foreach 迴圈遍歷每一個月份
     foreach ($months as $index => $monthName): 
         // 設定 $monthNum 為該月份的數字（因為 $index 從 0 開始，所以要加 1）
         $monthNum = $index + 1; 
     ?>
-        <!-- 
+                <!-- 
             建立一個連結元素作為月份按鈕 
             若 $monthNum 等於當前顯示的月份 ($month)，則加入 'current-month' class 來上色 
         -->
-        <a class="month-button <?php if ($monthNum == $month) echo 'current-month'; ?>" 
-           href="test copy.php?year=<?= $year ?>&month=<?= $monthNum ?>">
-           <!-- 顯示月份名稱，例如 'Jan', 'Feb' 等 -->
-           <?= $monthName ?>
-        </a>
-    <?php endforeach; ?>
-</div>
+                <a class="month-button <?php if ($monthNum == $month) echo 'current-month'; ?>"
+                    href="test copy.php?year=<?= $year ?>&month=<?= $monthNum ?>">
+                    <!-- 顯示月份名稱，例如 'Jan', 'Feb' 等 -->
+                    <?= $monthName ?>
+                </a>
+                <?php endforeach; ?>
+            </div>
 
         </div>
     </div>
@@ -256,22 +260,22 @@ $months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
     </div>
     <div class="boxCalendar">
         <div class="box3">
-        <table>
-        <tr>
-            <!-- <td></td> -->
-            <td>日</td>
-            <td>一</td>
-            <td>二</td>
-            <td>三</td>
-            <td>四</td>
-            <td>五</td>
-            <td>六</td>
-        </tr>
-        <?php
+            <table>
+                <tr>
+                    <!-- <td></td> -->
+                    <td>日</td>
+                    <td>一</td>
+                    <td>二</td>
+                    <td>三</td>
+                    <td>四</td>
+                    <td>五</td>
+                    <td>六</td>
+                </tr>
+                <?php
 
-$firstDay = "{$year}-{$month}-1"; //顯示第一天
-$firstDayTime = strtotime($firstDay);
-$firstDayWeek = date("w", $firstDayTime);
+        $firstDay = "{$year}-{$month}-1"; //顯示第一天
+        $firstDayTime = strtotime($firstDay);
+        $firstDayWeek = date("w", $firstDayTime);
 
         for ($i = 0; $i < 6; $i++) {
             echo "<tr>";
@@ -294,29 +298,39 @@ $firstDayWeek = date("w", $firstDayTime);
             echo "</tr>";
         }
         ?>
-</table>
+            </table>
         </div>
     </div>
+
     <div class="boxFunction">
         <div class="box4">
-            <a  href="test copy.php?year=<?= $year - 1 ?>&month=<?= $month; ?>"><img src="./img/04.png" alt="" class="resized-image"></a>
-            <a  href="test copy.php?year=<?= $prevYear; ?>&month=<?= $prevMonth; ?>"><img src="./img/03.png" alt="" class="resized-image"></a>
-            <a  href="test copy.php?year=<?=date("Y"); ?>&month=<?=date("m"); ?>"><img src="./img/05.png" alt="" class="resized-image"></a>
-            <a  href="test copy.php?year=<?= $nextYear; ?>&month=<?= $nextMonth; ?>"><img src="./img/01.png" alt="" class="resized-image"></a>
-            <a  href="test copy.php?year=<?= $year + 1; ?>&month=<?= $month; ?>"><img src="./img/02.png" alt="" class="resized-image"></a>
+            <a href="test copy.php?year=<?= $year - 1 ?>&month=<?= $month; ?>"><img src="./img/04.png" alt=""
+                    class="resized-image"></a>
+            <a href="test copy.php?year=<?= $prevYear; ?>&month=<?= $prevMonth; ?>"><img src="./img/03.png" alt=""
+                    class="resized-image"></a>
+            <a href="test copy.php?year=<?=date(" Y"); ?>&month=
+                <?=date("m"); ?>"><img src="./img/05.png" alt="" class="resized-image">
+            </a>
+            <a href="test copy.php?year=<?= $nextYear; ?>&month=<?= $nextMonth; ?>"><img src="./img/01.png" alt=""
+                    class="resized-image"></a>
+            <a href="test copy.php?year=<?= $year + 1; ?>&month=<?= $month; ?>"><img src="./img/02.png" alt=""
+                    class="resized-image"></a>
         </div>
+
         <div class="box5">
-        <form action="calendar_coursework.php" class="div_form div_center">
-    <div>
-        <div>
-            <label for="year"></label>
-            <input type="number" name="year" id="year" placeholder="YYYY" pattern="\d{4}" title="請輸入年份（YYYY）">年
-            <label for="month"></label>
-            <input type="number" name="month" id="month" placeholder="MM" pattern="\d{2}" title="請輸入月份（MM）">月
-            <input type="submit" value="送出">
-        </div>
-    </div>
-    </form>
+            <form action="calendar_coursework.php">
+                <div>
+                    <div>
+                        <label for="year"></label>
+                        <input type="number" name="year" id="year" placeholder="YYYY" pattern="\d{4}"
+                            title="請輸入年份（YYYY）">年
+                        <label for="month"></label>
+                        <input type="number" name="month" id="month" placeholder="MM" pattern="\d{2}"
+                            title="請輸入月份（MM）">月
+                        <input type="submit" value="送出">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </body>
