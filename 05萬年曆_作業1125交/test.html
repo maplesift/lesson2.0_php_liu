@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排版</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .boxspece {
+            width: 98vw;
+            height: 5vh;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 10vh;
+            /* background-color: #00d9ff; */
+            font-size: 32px;
+        }
+
+        .box1 {
+            width: 50vw;
+            height: 10vh;
+            background-color: #ff3434;
+            font-size: 32px;
+
+        }
+
+        .boxMonth {
+            display: flex;
+            justify-content: start;
+            width: 100vw;
+            height: 1vh;
+            /* background-color: #00d9ff; */
+            font-size: 32px;
+        }
+
+
+        .box2 {
+            width: 20vw;
+            height: 74vh;
+            background-color: #aeff00;
+            font-size: 32px;
+            position: absolute;
+            top: 10%;
+        }
+
+        .boxCalendar {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 50vh;
+            /* background-color: #00d9ff; */
+            font-size: 32px;
+            margin-bottom: 10px;
+
+        }
+
+        .box3 {
+            width: 48vw;
+            height: 50vh;
+            background-color: #799838;
+            font-size: 32px;
+        }
+
+        .boxFunction {
+            display: flex;
+            justify-content: center;
+            /* 讓 .box4 在水平置中 */
+            width: 100vw;
+            height: 50vh;
+            position: relative;
+            /* 設置為相對定位，以便子元素使用絕對定位 */
+            font-size: 32px;
+        }
+
+        .box4 {
+            width: 55vw;
+            height: 18vh;
+            background-color: #4fc677;
+            font-size: 32px;
+        }
+
+        .box5 {
+            width: 17vw;
+            height: 10vh;
+            background-color: #00ff62;
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            /* 垂直置中內容 */
+            justify-content: center;
+            /* 水平置中內容 */
+            position: absolute;
+            right: 5%;
+            /* 將索引移到右側 */
+            bottom: 70%;
+            /* 將索引移到底部 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="boxspece"></div>
+    <div class="box">
+        <div class="box1">1月到12月</div>
+    </div>
+    <div class="boxMonth">
+        <div class="box2">年月</div>
+    </div>
+    <div class="boxCalendar">
+        <div class="box3">萬年曆</div>
+    </div>
+    <div class="boxFunction">
+        <div class="box4">去年>明年按鈕</div>
+        <div class="box5">索引</div>
+    </div>
+</body>
+
+</html>
