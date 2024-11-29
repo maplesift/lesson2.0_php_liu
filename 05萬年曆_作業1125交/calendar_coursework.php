@@ -7,10 +7,27 @@
     <title>萬年曆</title>
     <!-- <link rel="stylesheet" href="./style.css"> -->
     <link rel="icon" href="./test.ico" sizes="32x32" type="image/png">
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Delius&family=Sixtyfour+Convergence&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+        <?php
+$month = filter_input(INPUT_GET, 'month', FILTER_VALIDATE_INT) ?: date('n'); // 預設為當前月份
+if (in_array($month, [12, 1, 2])) {
+    $seasonClass = "winter";
+} elseif (in_array($month, [3, 4, 5])) {
+    $seasonClass = "spring";
+} elseif (in_array($month, [6, 7, 8])) {
+    $seasonClass = "summer";
+} else {
+    $seasonClass = "autumn";
+}
+?>
 </head>
 
-<body>
+<body class="<?php echo $seasonClass; ?>">
+    <div class="space">
+
+    </div>
     <?php
     if (isset($_GET['month'])) {
         $month = $_GET['month'];
@@ -30,21 +47,14 @@
     $nextMonth = ($month == 12) ? 1 : $month + 1;
     $nextYear = ($month == 12) ? $year + 1 : $year;
     ?>
-<div >
-    <?php
-    // DateTime::createFromFormat('Y-m', "{$year}-{$month}")：從指定的年份和月份字串中創建一個 DateTime 物件。
-    // Y年n月：顯示年和月的數字格式，例如「2024年11月」。
-    // F：DateTime 物件中的 F 參數會顯示月份的英文全名，例如「November」。
-        $date = DateTime::createFromFormat('Y-m', "{$year}-{$month}");
-        echo "<h1>{$date->format('Y年n月')} <br>{$date->format('F')}</h1>";
-    ?>
-</div>
+
+
     <?php
 // 建立一個包含月份縮寫的陣列
 $months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 ?>
-<div class="month-buttons">
-    <?php 
+    <div class="month-buttons">
+        <?php 
     // 使用 foreach 迴圈遍歷每一個月份
     foreach ($months as $index => $monthName): 
         // 設定 $monthNum 為該月份的數字（因為 $index 從 0 開始，所以要加 1）
@@ -54,14 +64,13 @@ $months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
             建立一個連結元素作為月份按鈕 
             若 $monthNum 等於當前顯示的月份 ($month)，則加入 'current-month' class 來上色 
         -->
-        <a class="month-button <?php if ($monthNum == $month) echo 'current-month'; ?>" 
-           href="calendar_coursework.php?year=<?= $year ?>&month=<?= $monthNum ?>">
-           <!-- 顯示月份名稱，例如 'Jan', 'Feb' 等 -->
-           <?= $monthName ?>
+        <a class="month-button <?php if ($monthNum == $month) echo 'current-month'; ?>"
+            href="calendar_coursework.php?year=<?= $year ?>&month=<?= $monthNum ?>">
+            <!-- 顯示月份名稱，例如 'Jan', 'Feb' 等 -->
+            <?= $monthName ?>
         </a>
-    <?php endforeach; ?>
-</div>
-
+        <?php endforeach; ?>
+    </div>
 
     <table>
         <tr>
@@ -102,208 +111,221 @@ $firstDayWeek = date("w", $firstDayTime);
         }
         ?>
 
-</table>
-<div class="div_center div_a">
-    <!-- 去年到明年按鈕*5 -->
-<a  href="calendar_coursework.php?year=<?= $year - 1 ?>&month=<?= $month; ?>"><img src="./img/04.png" alt="" class="resized-image"></a>
-<a  href="calendar_coursework.php?year=<?= $prevYear; ?>&month=<?= $prevMonth; ?>"><img src="./img/03.png" alt="" class="resized-image"></a>
-<a  href="calendar_coursework.php?year=<?=date("Y"); ?>&month=<?=date("m"); ?>"><img src="./img/05.png" alt="" class="resized-image"></a>
-<a  href="calendar_coursework.php?year=<?= $nextYear; ?>&month=<?= $nextMonth; ?>"><img src="./img/01.png" alt="" class="resized-image"></a>
-<a  href="calendar_coursework.php?year=<?= $year + 1; ?>&month=<?= $month; ?>"><img src="./img/02.png" alt="" class="resized-image"></a>
-</div>
-    <form action="calendar_coursework.php" class="div_form div_center">
-    <div>
-        <div>
-            <label for="year"></label>
-            <input type="number" name="year" id="year" placeholder="YYYY" pattern="\d{4}" title="請輸入年份（YYYY）">年
-            <label for="month"></label>
-            <input type="number" name="month" id="month" placeholder="MM" pattern="\d{2}" title="請輸入月份（MM）">月
-            <input type="submit" value="送出">
-        </div>
+    </table>
+    <div class="div_center div_a">
+        <!-- 去年到明年按鈕*5 -->
+        <a href="calendar_coursework.php?year=<?= $year - 1 ?>&month=<?= $month; ?>"><img src="./img/04.png" alt=""
+                class="resized-image"></a>
+        <a href="calendar_coursework.php?year=<?= $prevYear; ?>&month=<?= $prevMonth; ?>"><img src="./img/03.png" alt=""
+                class="resized-image"></a>
+        <a href="calendar_coursework.php?year=<?=date(" Y"); ?>&month=
+            <?=date("m"); ?>"><img src="./img/05.png" alt="" class="resized-image">
+        </a>
+        <a href="calendar_coursework.php?year=<?= $nextYear; ?>&month=<?= $nextMonth; ?>"><img src="./img/01.png" alt=""
+                class="resized-image"></a>
+        <a href="calendar_coursework.php?year=<?= $year + 1; ?>&month=<?= $month; ?>"><img src="./img/02.png" alt=""
+                class="resized-image"></a>
     </div>
+    <form action="calendar_coursework.php" class="div_form div_center">
+        <div>
+            <div>
+                <label for="year"></label>
+                <input type="number" name="year" id="year" placeholder="YYYY" pattern="\d{4}" title="請輸入年份（YYYY）">年
+                <label for="month"></label>
+                <input type="number" name="month" id="month" placeholder="MM" pattern="\d{2}" title="請輸入月份（MM）">月
+                <input type="submit" value="search">
+            </div>
+            <div>
+            </div>
+        </div>
     </form>
-<style>
-    table {
-    width: 50%;
-    height: 50vh;
-    border-collapse: collapse;
-    margin: auto;
+    <div class="date_font">
+        <?php
+    // DateTime::createFromFormat('Y-m', "{$year}-{$month}")：從指定的年份和月份字串中創建一個 DateTime 物件。
+    // Y年n月：顯示年和月的數字格式，例如「2024年11月」。
+    // F：DateTime 物件中的 F 參數會顯示月份的英文全名，例如「November」。
+        $date = DateTime::createFromFormat('Y-m', "{$year}-{$month}");
+        echo "<h1>{$date->format('Y年n月')} <br>{$date->format('F')}</h1>";
+    ?>
+    </div>
+    <style>
+        * {
+            font-family: "Sour Gummy", serif;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
 
-}
+        body.winter {
+            background-color: #f4fcffb3;
+        }
 
-td {
-    padding: 5px 10px;
-    text-align: center;
-    border: 1px solid #999;
-}
+        body.spring {
+            background-color: #f2fff2;
+        }
 
-.thisMonth {
-    font-weight: bold;
-}
+        body.summer {
+            background-color: #fffbe4;
+        }
 
-.holiday {
-    /* background: pink; */
-    color: #ff0000;
-    font-weight: bold;
-
-}
-
-.grey-text {
-    color: #999;
-    font-weight: lighter;
-}
-
-.today {
-    background: blue;
-    color: white;
-    font-weight: bolder;
-}
-
-.outside {
-    width: 100%;
-    height: 80vh;
-    font-size: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.date_font {
-    font-size: 48px;
-}
-
-.div_center {
-    margin: auto;
-    text-align: center;
-    /* background-color: skyblue; */
-}
-
-.resized-image {
-    width: 50px;
-    /* 固定寬度 */
-    height: auto;
-    /* 高度自動調整，保持比例 */
-    position: relative;
-}
+        body.autumn {
+            background-color: #fff3ee;
+        }
 
 
-.div_date {
-    margin: auto;
-    text-align: center;
-}
 
-.month-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    color: #ff0000;
-    margin-bottom: 10px;
-}
+        .date_font {
 
-.month-button {
-    padding: 5px 10px;
-    text-decoration: none;
-    color: black;
-}
+            font-size: 26px;
+            float: left;
+            position: absolute;
+            left: 5%;
+            top: 17%;
+        }
 
-.current-month {
-    background-color: #FFD700;
-    /* Gold color for current month */
-    font-weight: bold;
-    color: white;
-}
+        .space {
+            width: 100%;
+            height: 40px;
+        }
+
+        table {
+            width: 50%;
+            height: 50vh;
+            border-collapse: collapse;
+            margin: auto;
+        }
+
+        .radius {
+            border-radius: 7px;
+        }
+
+        td {
+            width: 60px;
+            height: 60px;
+            padding: 5px 10px;
+            text-align: center;
+            border: 1px solid #999;
+            /* background-color: white; */
+
+        }
+
+        td:hover {
+            background-color: skyblue;
+            transition: 0.7s;
+        }
+
+        form {
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            /* border: 1px solid #ccc; */
+            border-radius: 10px;
+        }
+
+        form label {
+            display: inline-block;
+            width: 45px;
+            text-align-last: justify;
+
+        }
+
+        form input[type=text],
+        form input[type=password],
+        form input[type=number] {
+            padding: 5px;
+            font-size: 20px;
+            border: 0px;
+            border-bottom: 1px solid #ccc;
+            margin: 3px;
+        }
+
+        form input[type=submit],
+        form input[type=reset] {
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: rgb(0, 255, 17);
+            border-radius: 5px;
+            margin: 10px 10px;
+            border: 1px solid #eee;
+            cursor: pointer;
+
+        }
+
+        form input[type=submit]:hover {
+            padding: 7px 12px;
+            background-color: rgb(0, 255, 229);
+            transition: 0.7s;
+        }
+
+        .holiday {
+            /* background: pink; */
+            color: #ff0000;
+            font-weight: bold;
+
+        }
+
+        .grey-text {
+            color: #999;
+            font-weight: lighter;
+        }
+
+        .today {
+            background: blue;
+            color: white;
+            font-weight: bolder;
+        }
+
+        .outside {
+            width: 100%;
+            height: 80vh;
+            font-size: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
 
-* {
-    box-sizing: border-box;
-}
+        .div_center {
+            margin: auto;
+            text-align: center;
+            /* background-color: skyblue; */
+        }
 
-.boxspece {
-    width: 98vw;
-    height: 5vh;
-}
-
-.box {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 10vh;
-    font-size: 32px;
-}
-
-.box1 {
-    width: 50vw;
-    height: 10vh;
-    background-color: #ff3434;
-    font-size: 32px;
-
-}
-
-.boxMonth {
-    display: flex;
-    justify-content: start;
-    width: 100vw;
-    height: 1vh;
-    font-size: 32px;
-}
+        .resized-image {
+            width: 50px;
+            /* 固定寬度 */
+            height: auto;
+            /* 高度自動調整，保持比例 */
+            position: relative;
+        }
 
 
-.box2 {
-    width: 20vw;
-    height: 74vh;
-    background-color: #aeff00;
-    font-size: 32px;
-    position: absolute;
-    top: 10%;
-}
+        .div_date {
+            margin: auto;
+            text-align: center;
+        }
 
-.boxCalendar {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 50vh;
-    font-size: 32px;
-    margin-bottom: 10px;
+        .month-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
 
-}
+        .month-button {
+            padding: 5px 10px;
+            text-decoration: none;
+            color: black;
+        }
 
-.box3 {
-    width: 48vw;
-    height: 50vh;
-    background-color: #799838;
-    font-size: 32px;
-}
-
-.boxFunction {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 50vh;
-    position: relative;
-    font-size: 32px;
-}
-
-.box4 {
-    width: 55vw;
-    height: 18vh;
-    background-color: #4fc677;
-    font-size: 32px;
-}
-
-.box5 {
-    width: 17vw;
-    height: 10vh;
-    background-color: #00ff62;
-    font-size: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 5%;
-    bottom: 70%;
-}
-
-</style>
+        .current-month {
+            background-color: #FFD700;
+            /* Gold color for current month */
+            font-weight: bold;
+            color: white;
+            border-radius: 13px;
+        }
+    </style>
 </body>
 
 </html>

@@ -86,22 +86,22 @@
     <form action="edit.php" method="post">
         <div>
             <label for="">帳號</label>：
-            <input type="text" name="acc" id="<?=$mem['acc']?>">
+            <input type="text" name="acc" value="<?=$mem['acc']?>">
         </div>
         <div>
             <label for="">密碼</label>：
-            <input type="password" name="pw" id="<?=$mem['pw']?>">
+            <input type="password" name="pw" value="<?=$mem['pw']?>">
         </div>
         <div>
             <label for="">電子郵件</label>：
-            <input type="text" name="email" id="<?=$mem['email']?>">
+            <input type="text" name="email" value="<?=$mem['email']?>">
         </div>
         <div>
             <label for="">電話</label>：
-            <input type="text" name="tel" id="<?=$mem['tel']?>">
+            <input type="text" name="tel" value="<?=$mem['tel']?>">
         </div>
         <div>
-            <input type="submit" value="註冊">
+            <input type="submit" value="修改">
             <input type="reset" value="重置">
         </div>
     </form>
